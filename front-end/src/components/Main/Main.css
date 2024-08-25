@@ -30,7 +30,8 @@
     --main-bottom-info-color: #bdc1c6;
 }
 
-.dark .card-image img {
+.dark .card-image img,
+.dark .search-box img {
     filter: invert(100%);
 }
 
