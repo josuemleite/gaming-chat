@@ -13,7 +13,6 @@ jobs:
   backend-deploy:
     name: Deploy Backend to Azure
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'push' && (github.event.head_commit.message contains 'back-end')}}
 
     steps:
       - uses: actions/checkout@v2
