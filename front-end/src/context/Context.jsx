@@ -54,11 +54,11 @@ const ContextProvider = (props) => {
     setInput("");
   };
 
-  const handleCardClick = (text) => {
-    setRecentPrompt(text);
-    setPrevPrompts((prev) => [...prev, text]);
-    onSent(text);
-  };
+  // const handleCardClick = (text) => {
+  //   setRecentPrompt(text);
+  //   setPrevPrompts((prev) => [...prev, text]);
+  //   onSent(text);
+  // };
 
   const contextValue = {
     prevPrompts,
@@ -72,7 +72,7 @@ const ContextProvider = (props) => {
     input,
     setInput,
     newChat,
-    handleCardClick,
+    // handleCardClick,
   };
 
   return (

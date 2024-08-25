@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import "./Main.css";
 import { assets } from "../../assets/assets";
 import { Context } from "../../context/Context";
+import ThemeSwitcher from "../../context/ThemeSwitcher/ThemeSwitcher";
 
 const Main = () => {
   const {
@@ -12,14 +13,28 @@ const Main = () => {
     resultData,
     setInput,
     input,
-    handleCardClick
+    // handleCardClick,
+    newChat,
   } = useContext(Context);
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter" && input) {
+      onSent();
+      setInput("");
+    }
+  };
+
+  const handleSend = () => {
+    onSent();
+    setInput("");
+  };
 
   return (
     <div className="main">
       <div className="nav">
-        <p>Gaming Chat</p>
-        <img src={assets.user_icon} alt="" />
+        <p onClick={() => newChat()}>Gaming Chat</p>
+        {/* <img src={assets.user_icon} alt="" /> */}
+        <ThemeSwitcher />
       </div>
       <div className="main-container">
         {!showResult ? (
@@ -31,21 +46,46 @@ const Main = () => {
               <p>Como eu posso te ajudar hoje?</p>
             </div>
             <div className="cards">
-              <div className="card" value="" onClick={() => handleCardClick("Vale a pena jogar Mario Bros?")}>
+              <div
+                className="card"
+                value=""
+                onClick={() => setInput("Vale a pena jogar Mario Bros?")}
+              >
                 <p>Vale a pena jogar Mario Bros?</p>
-                <img src={assets.compass_icon} alt="" />
+                <div className="card-image">
+                  <img src={assets.compass_icon} alt="" />
+                </div>
               </div>
-              <div className="card" onClick={() => handleCardClick("O que as pessoas dizem sobre The Witcher?")}>
+              <div
+                className="card"
+                onClick={() =>
+                  setInput("O que as pessoas dizem sobre The Witcher?")
+                }
+              >
                 <p>O que as pessoas dizem sobre The Witcher?</p>
-                <img src={assets.bulb_icon} alt="" />
+                <div className="card-image">
+                  <img src={assets.bulb_icon} alt="" />
+                </div>
               </div>
-              <div className="card" onClick={() => handleCardClick("Contra é um jogo tão difícil como dizem?")}>
+              <div
+                className="card"
+                onClick={() =>
+                  setInput("Contra é um jogo tão difícil como dizem?")
+                }
+              >
                 <p>Contra é um jogo tão difícil como dizem?</p>
-                <img src={assets.message_icon} alt="" />
+                <div className="card-image">
+                  <img src={assets.message_icon} alt="" />
+                </div>
               </div>
-              <div className="card" onClick={() => handleCardClick("Quem desenvolveu Hollow Knight?")}>
+              <div
+                className="card"
+                onClick={() => setInput("Quem desenvolveu Hollow Knight?")}
+              >
                 <p>Quem desenvolveu Hollow Knight?</p>
-                <img src={assets.code_icon} alt="" />
+                <div className="card-image">
+                  <img src={assets.code_icon} alt="" />
+                </div>
               </div>
             </div>
           </>
@@ -77,10 +117,11 @@ const Main = () => {
               value={input}
               type="text"
               placeholder="Digite uma pergunta ou comando"
+              onKeyDown={handleKeyDown}
             />
             <div>
               {input ? (
-                <img onClick={() => onSent()} src={assets.send_icon} alt="" />
+                <img onClick={handleSend} src={assets.send_icon} alt="" />
               ) : null}
             </div>
           </div>

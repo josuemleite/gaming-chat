@@ -7,6 +7,19 @@
     --recent-entry-background-hover: #e2e6eb;
 }
 
+.dark {
+    --sidebar-background: #1e1f20;
+    --new-chat-background: #1a1a1b;
+    --new-chat-color: #5a5a5a;
+    --recent-title-color: #e3e3e3;
+    --recent-entry-color: #e3e3e3;
+    --recent-entry-background-hover: #282a2c;
+}
+
+.dark .sidebar img {
+    filter: brightness(10%) invert(100%);
+}
+
 .sidebar {
     min-height: 100vh;
     display: inline-flex;
@@ -14,6 +27,10 @@
     justify-content: space-between;
     background-color: var(--sidebar-background);
     padding: 25px 15px;
+}
+
+.sidebar.extended {
+    width: 300px;
 }
 
 .sidebar img {
@@ -82,14 +99,3 @@
         display: none;
     }
 }
-
-/* @media (prefers-color-scheme: dark) {
-    :root {
-        --sidebar-background: #1e1f20;
-        --new-chat-background:  #1a1a1b;
-        --new-chat-color:  #5a5a5a;
-        --recent-title-color:  #e3e3e3;
-        --recent-entry-color: #e3e3e3;
-        --recent-entry-background-hover: #282a2c;
-    }
-} */
